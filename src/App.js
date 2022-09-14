@@ -5,18 +5,29 @@ import React from 'react';
 import Sidebar from './Sidebar';
 import Chart from './Chart';
 import Header from './header';
+import Table from './table';
+
+import { Component } from 'react';
 
 import { BrowserRouter as Router } from 'react-router-dom';
-function App() {
-  return (
-    <Router>
-      <div> <Header /></div>
-    <div className="row">
-      <div className="col-3"><Sidebar /></div>
-      <div className="col-9 a"><Chart /></div>
-    </div>    
-  </Router>
-  );
-}
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { Table: [] };
+  }
+ 
 
-export default App;
+  render() {
+
+    return (
+      <Router>
+        <div> <Header /></div>
+        <div className="row">
+          <div className="col-md-2" > <Sidebar /></div>
+          <div className="col-md-4 c" > <Chart /></div>
+          <div className="col-md-2" > <Table /></div>
+        </div>
+      </Router>
+    );
+  }
+}

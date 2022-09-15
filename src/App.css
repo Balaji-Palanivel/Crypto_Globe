@@ -82,22 +82,23 @@
     color: rgb(60, 124, 60);
 }
 .c{
-  top: 60px;
+  top: 90px;
 }
 .grid-container {
   display: grid;
+ 
 }
 
 .grid-container > div {
   background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
+
 }
 .currency {
-  position: absolute;
-  top: 0px;
-  width: 236px;
+  position: fixed;
+  top: 78px;
+  width: 224px;
   right: 11px;
-  height:500px;
-  overflow:auto;  
-  margin-top:20px;
+  height: 500px;
+  overflow: auto;
 }

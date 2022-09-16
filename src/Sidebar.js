@@ -7,32 +7,32 @@ import {
   CDBSidebarMenu,
   CDBSidebarMenuItem,
 } from 'cdbreact';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import App from './App';
+import Chart from './Chart';
 
 const Sidebar = () => {
   return (
     <div className="menu" style={{ display: 'flex', position : "fixed", height: '100vh', overflow: 'scroll initial'}}>
       <CDBSidebar textColor="#fff" backgroundColor="#181818">
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
-          <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
-            Dashboard
-          </a>
+                     Dashboard        
         </CDBSidebarHeader>
 
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
-            <NavLink exact to="/" activeClassName="activeClicked">
+            <Link to="/home" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="home">Home</CDBSidebarMenuItem>
-            </NavLink>
-            <NavLink exact to="/tables" activeClassName="activeClicked">
+            </Link>
+            <Link to="/Table" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="table">Tables</CDBSidebarMenuItem>
-            </NavLink>
-            <NavLink exact to="/analytics" activeClassName="activeClicked">
+            </Link>
+            <Link to="/Chart" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="chart-line">Charts</CDBSidebarMenuItem>
-            </NavLink>
-            <NavLink exact to="/profile" activeClassName="activeClicked">
+            </Link>
+            <Link to="/profile" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="exclamation-circle"> About</CDBSidebarMenuItem>
-            </NavLink>
+            </Link>
           </CDBSidebarMenu>
         </CDBSidebarContent>
 

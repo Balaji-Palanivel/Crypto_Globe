@@ -26,14 +26,14 @@ export default class Chart_compare extends Component {
             all_assests: [],
             drop_item: "Bitcoin",
             drop_item_1: "Ethereum",
-            bit_coin: [], 
+            bit_coin: [],
             eth_coin: [],
             new_arr: [],
-            tab_data1 : [], tab_data2 :[]
+            tab_data1: [], tab_data2: []
         }
         this.arr_put = this.arr_put.bind(this);
         this.api_Call = this.api_Call.bind(this);
-       
+
     }
     dateFormatter_1 = (item) => { return moment(new Date(item)).format('DD MMM YY') }
     dateFormatter = (item) => { return moment(new Date(item)).format('MMM YY') }
@@ -64,7 +64,7 @@ export default class Chart_compare extends Component {
         })
             .done(
                 function (abc) {
-                    this.setState({ bit_coin: abc.data});
+                    this.setState({ bit_coin: abc.data });
                 }.bind(this)
             )
             .fail(
@@ -77,26 +77,26 @@ export default class Chart_compare extends Component {
         })
             .done(
                 function (abc1) {
-                    this.setState({ eth_coin: abc1.data});
+                    this.setState({ eth_coin: abc1.data });
                 }.bind(this)
             )
             .fail(
                 function (datas) {
                 }
             );
-            this.arr_put() 
+        this.arr_put()
     }
-    onclick_1(name, id,inx) {
-       
-        this.setState({ drop_item: name});
+    onclick_1(name, id, inx) {
+
+        this.setState({ drop_item: name });
         $.ajax({
-            
-            url: "https://api.coincap.io/v2/assets/" + id+ "/history?interval=d1",
+
+            url: "https://api.coincap.io/v2/assets/" + id + "/history?interval=d1",
             contentType: "application/json"
         })
             .done(
                 function (abc) {
-                    this.setState({ bit_coin: abc.data , tab_data1 :this.state.all_assests[inx]});
+                    this.setState({ bit_coin: abc.data, tab_data1: this.state.all_assests[inx] });
                 }.bind(this)
             )
             .fail(
@@ -104,15 +104,15 @@ export default class Chart_compare extends Component {
                 }
             );
     }
-    onclick_2(name, id,inx) {
-        this.setState({ drop_item_1: name});
+    onclick_2(name, id, inx) {
+        this.setState({ drop_item_1: name });
         $.ajax({
-            url: "https://api.coincap.io/v2/assets/" + id+ "/history?interval=d1",
+            url: "https://api.coincap.io/v2/assets/" + id + "/history?interval=d1",
             contentType: "application/json"
         })
             .done(
                 function (abc1) {
-                    this.setState({ eth_coin: abc1.data , tab_data2 :this.state.all_assests[inx]});
+                    this.setState({ eth_coin: abc1.data, tab_data2: this.state.all_assests[inx] });
                 }.bind(this)
             )
             .fail(
@@ -135,12 +135,12 @@ export default class Chart_compare extends Component {
         let final_arr = [];
         arr_1.forEach((v, i) => final_arr = [...final_arr, { "date": arr_1[i], "priceUsd_1": arr_2[i], "priceUsd_2": arr_3[i] }])
         this.setState({ new_arr: final_arr });
-      
+
     }
     findvalid(Val) {
 
-        const detail = (Val === null || Val === undefined ) ? "--" : (typeof(Val) == "number") ?  parseInt(Val) : Val ;   
-                                              //findvalid() for data valid or not
+        const detail = (Val === null || Val === undefined) ? "--" : (typeof (Val) == "number") ? parseInt(Val) : Val;
+        //findvalid() for data valid or not
         return detail;
     }
     render() {
@@ -156,7 +156,7 @@ export default class Chart_compare extends Component {
                         </Dropdown.Toggle>
                         <Dropdown.Menu style={{ height: "150px", overflow: "auto", position: "fixed" }}>
                             {this.state.all_assests ? this.state.all_assests.map((coin, index) =>
-                                <Dropdown.Item key={index} onClick={(e) => this.onclick_1(coin.name, coin.id,index)}>{coin.symbol + " - " + coin.name}</Dropdown.Item>
+                                <Dropdown.Item key={index} onClick={(e) => this.onclick_1(coin.name, coin.id, index)}>{coin.symbol + " - " + coin.name}</Dropdown.Item>
                             ) : "No data"}
 
                         </Dropdown.Menu>
@@ -170,7 +170,7 @@ export default class Chart_compare extends Component {
                         </Dropdown.Toggle>
                         <Dropdown.Menu style={{ height: "150px", overflow: "auto", position: "fixed" }}>
                             {this.state.all_assests ? this.state.all_assests.map((coin, index) =>
-                                <Dropdown.Item key={index} onClick={(e) => this.onclick_2(coin.name, coin.id,index)}>{coin.symbol + " - " + coin.name}</Dropdown.Item>
+                                <Dropdown.Item key={index} onClick={(e) => this.onclick_2(coin.name, coin.id, index)}>{coin.symbol + " - " + coin.name}</Dropdown.Item>
                             ) : "No data"}
 
                         </Dropdown.Menu>
@@ -194,7 +194,7 @@ export default class Chart_compare extends Component {
                             tickFormatter={this.dateFormatter}
                         />
                         <YAxis />
-                        <Tooltip labelFormatter={this.dateFormatter_1} formatter={(value, name) => (name === "priceUsd_1" || name === "priceUsd_2") ? parseInt(value) : value.toLocaleString()}/>
+                        <Tooltip labelFormatter={this.dateFormatter_1} formatter={(value, name) => (name === "priceUsd_1" || name === "priceUsd_2") ? parseInt(value) : value.toLocaleString()} />
                         <Legend />
                         <Area dataKey="priceUsd_1" barSize={20} fill="#31E1F7" />
                         <Area dataKey="priceUsd_2" barSize={20} fill="#413ea0" />
@@ -202,34 +202,34 @@ export default class Chart_compare extends Component {
                     </ComposedChart>
                 </div>
                 <div className="compare_table">
-                            <table className="table table_style_1">
-                            <tbody>
+                    <table className="table table_style_1">
+                        <tbody>
                             <tr >
-                                    <thead>Name</thead>                                 
-                                    <td>{this.findvalid(this.state.tab_data1.name)}</td>
-                                    <td>{this.findvalid(this.state.tab_data2.name)}</td>                                  
+                                <thead>Name</thead>
+                                <td>{this.findvalid(this.state.tab_data1.name)}</td>
+                                <td>{this.findvalid(this.state.tab_data2.name)}</td>
                             </tr>
                             <tr >
-                                 <thead>Symbol</thead>
-                                 <td>{this.findvalid(this.state.tab_data1.symbol)} </td>
-                                 <td>{this.findvalid(this.state.tab_data2.symbol)}  </td>                
-                             </tr>
-                             <tr >
-                                 <thead>Today's Price</thead>
-                                 <td>${this.findvalid(parseInt(this.state.tab_data1.priceUsd))}</td>   
-                                 <td>${this.findvalid(parseInt(this.state.tab_data2.priceUsd))}</td>                         
-                             </tr>
-                             <tr >
-                                 <thead>Maximum Supply</thead>     
-                                 <td>{this.findvalid(parseInt(this.state.tab_data1.maxSupply))}</td>                           
-                                 <td>{this.findvalid(parseInt(this.state.tab_data2.maxSupply))}</td>
-                             </tr>
-                                
-                            
-                            </tbody>
-                        </table> 
+                                <thead>Symbol</thead>
+                                <td>{this.findvalid(this.state.tab_data1.symbol)} </td>
+                                <td>{this.findvalid(this.state.tab_data2.symbol)}  </td>
+                            </tr>
+                            <tr >
+                                <thead>Today's Price</thead>
+                                <td>${this.findvalid(parseInt(this.state.tab_data1.priceUsd))}</td>
+                                <td>${this.findvalid(parseInt(this.state.tab_data2.priceUsd))}</td>
+                            </tr>
+                            <tr >
+                                <thead>Maximum Supply</thead>
+                                <td>{this.findvalid(parseInt(this.state.tab_data1.maxSupply))}</td>
+                                <td>{this.findvalid(parseInt(this.state.tab_data2.maxSupply))}</td>
+                            </tr>
 
-                </div> 
+
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
 
         );

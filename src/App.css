@@ -2,23 +2,28 @@
   div.menu {
     display: none;
   }
-  .menu_1{
+
+  .menu_1 {
     display: block;
   }
-  div.currency{
+
+  div.currency {
     height: 300px;
     width: 80%;
-       
+
   }
-  .cen{
+
+  .cen {
     justify-content: center;
   }
 }
+
 @media screen and (min-width: 700px) {
-  .menu_1{
+  .menu_1 {
     display: none;
   }
-  div.xyz{
+
+  div.xyz {
     display: none;
   }
 
@@ -81,22 +86,15 @@
 }
 
 .currency {
-  top : "0px";
-  height: 830px;
+  top: "0px";
+  height: 875px;
   overflow: auto;
 }
 
-
-.header {
-  position: fixed;
-  left: 270px;
-  font-size: 40px;
-  color: white;
-  width: 1577px;
-
-  height: 77px;
-  text-align: center;
-  background-color: rgb(24, 24, 24);
+.FullTable {
+  top: "0px";
+  height: 810px;
+  overflow: auto;
 }
 
 .icon_doller {
@@ -119,13 +117,9 @@
   color: rgb(0 0 0 / 15%);
 }
 
-.table_style {
-  overflow-y: auto;
-   border-radius: 15px;
-}
+
 
 .table_style_1 {
-
   border-radius: 20px;
   background-color: rgb(215, 237, 226);
   align-items: center;
@@ -141,30 +135,8 @@
 
 }
 
-
-
 .table_style_1 tbody tr:nth-child(even) {
   background-color: #E1FFEE;
-
-}
-
-.table_style_3 tbody tr:nth-child(even) {
-  background-color: #cd1111;
-
-}
-
-.container-table100 {
-  width: 90%;
-  min-height: 90vh;
-  background: #d1d1d1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
 
 }
 
@@ -177,9 +149,10 @@
   transform: translate(-50%, -50%);
 }
 
+
 table {
   width: 100%;
-  background-color: rgb(215, 237, 226)
+  background-color: rgb(215, 237, 226);
 }
 
 .table100.ver5 tbody tr:nth-child(even) {
@@ -195,7 +168,7 @@ table {
   font-size: 18px;
   color: rgb(7, 6, 6);
   line-height: 1.4;
- 
+
 }
 
 .table100.ver5 thead {
@@ -220,9 +193,8 @@ table {
 .table100.ver5 .hov-column-ver5::before {
   content: "";
   display: block;
- 
   width: 80%;
-  height: 100%;
+
   pointer-events: none;
   border-left: 1px solid #f2f2f2;
   border-right: 1px solid #f2f2f2
@@ -240,10 +212,8 @@ table {
 .table100.ver5 .row100 td:hover:before {
   content: "";
   display: block;
- 
   width: 100%;
   height: 100%;
- 
   pointer-events: none;
   border: 1px solid #fe3e64
 }

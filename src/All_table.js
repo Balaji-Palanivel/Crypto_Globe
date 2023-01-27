@@ -26,7 +26,7 @@ export default class All_table extends Component {
             FilteredTable: []
         };
 
-   
+
         this.searchByName = this.searchByName.bind(this);
     }
 
@@ -96,71 +96,72 @@ export default class All_table extends Component {
     render() {
         return (
 
-            <section>
-        <Header />
-        <div className="row">
-            
-        
-            <div className="col-sm-2" ><Sidebar /></div>
-            
-                <div >
-                    
+            <section >
+                <Header />
+                <div className="row">
+                    <div className="col-md-2"><Sidebar /></div>
 
-                        {this.state.Lib.length > 0 ? <div ><br />
-                            <input type="text" className='form-control mb-3' placeholder="Searh By Coin" onChange={(e) => this.searchByName(e)} />
+
+
+                    <div class="col-md-10  ">
+                        <div className="col-sm-2 py-2 ">
+                            {this.state.Lib.length > 0 ?
+                                <input type="text" className='form-control ' placeholder="Searh By Coin" onChange={(e) => this.searchByName(e)} />
+
+                                : ""}
+
                         </div>
-                            : ""}
-                                      
-                </div>
-                {this.state.load == true ? <div id="loading">
-                    <div className="centerdiv">
-                        <img src="https://acegif.com/wp-content/uploads/loading-25.gif" style={{ width: '50px', height: '50px' }} />
-                        <span>   Loading...</span>
+                        <div className="FullTable table-responsive">
+                            <div id="Table" className="table  pe-2 table100 ver5" >
+                                {
+                                    this.state.Lib.length > 0 ? <table className="table">
+                                        <thead style={{position : "sticky" , top : "0px"}}>
+                                            <tr>
+                                                <td>S.No </td>
+                                                <td >Symbol </td>
+                                                <td>Name <i onClick={e => this.sorting_table(e, "name")} className="fa fa-fw fa-sort"></i></td>
+                                                <td>Price <i onClick={e => this.sorting_table(e, "priceUsd")} className="fa fa-fw fa-sort"></i></td>
+                                                <td >Max Supply <i onClick={e => this.sorting_table(e, "maxSupply")} className="fa fa-fw fa-sort"></i></td>
+                                                <td>Change Persent /24Hr</td>
+                                                <td>Explorer</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>{this.state.searchInput.length > 0 ? this.state.FilteredTable.map((author, index) =>
+                                            <tr key={index}>
+                                                <td>{index + 1}</td>
+                                                <td>{author.symbol}  </td>
+                                                <td>{author.name}</td>
+                                                <td>{parseInt(author.priceUsd)}</td>
+                                                <td >{this.findvalid(author.maxSupply)}</td>
+                                                <td>{author.changePercent24Hr}</td>
+                                                <td>{author.explorer}</td>
+                                            </tr>
+                                        ) : this.state.Lib ? this.state.Lib.map((author, index) =>
+                                            <tr key={index}>
+                                                <td>{index + 1}</td>
+                                                <td>{author.symbol}</td>
+                                                <td>{author.name}</td>
+                                                <td>{parseInt(author.priceUsd)}</td>
+                                                <td >{this.findvalid(author.maxSupply)}</td>
+                                                <td>{author.changePercent24Hr}</td>
+                                                <td>{author.explorer}</td>
+                                            </tr>
+                                        ) : " "}
+                                        </tbody>
+                                    </table> : " "}
+
+                            </div>
+                        </div>
                     </div>
-                </div> : " "}
 
-                <div id="Table" className="col-md-10 table_style table100 ver5" >
-                    {
-                        this.state.Lib.length > 0 ? <table className="table">
-                            <thead>
-                                <tr>
-                                    <td>S.No </td>
-                                    <td >Symbol </td>
-                                    <td>Name <i onClick={e => this.sorting_table(e, "name")} className="fa fa-fw fa-sort"></i></td>
-                                    <td>Price <i onClick={e => this.sorting_table(e, "priceUsd")} className="fa fa-fw fa-sort"></i></td>
-                                    <td >Max Supply <i onClick={e => this.sorting_table(e, "maxSupply")} className="fa fa-fw fa-sort"></i></td>
-                                    <td>Change Persent /24Hr</td>
-                                    <td>Explorer</td>
-                                </tr>
-                            </thead>
-                            <tbody>{this.state.searchInput.length > 0 ? this.state.FilteredTable.map((author, index) =>
-                                <tr key={index}>
-                                    <td>{index + 1}</td>
-                                    <td>{author.symbol}  </td>
-                                    <td>{author.name}</td>
-                                    <td>{parseInt(author.priceUsd)}</td>
-                                    <td >{this.findvalid(author.maxSupply)}</td>
-                                    <td>{author.changePercent24Hr}</td>
-                                    <td>{author.explorer}</td>
-                                </tr>
-                            ) : this.state.Lib ? this.state.Lib.map((author, index) =>
-                                <tr key={index}>
-                                    <td>{index + 1}</td>
-                                    <td>{author.symbol}</td>
-                                    <td>{author.name}</td>
-                                    <td>{parseInt(author.priceUsd)}</td>
-                                    <td >{this.findvalid(author.maxSupply)}</td>
-                                    <td>{author.changePercent24Hr}</td>
-                                    <td>{author.explorer}</td>
-                                </tr>
-                            ) : " "}
-                            </tbody>
-                        </table> : " "}
 
+                    {this.state.load == true ? <div id="loading">
+                        <div className="centerdiv">
+                            <img src="https://acegif.com/wp-content/uploads/loading-25.gif" style={{ width: '50px', height: '50px' }} />
+                            <span>   Loading...</span>
+                        </div>
+                    </div> : " "}
                 </div>
-
-
-            </div>
             </section>
         );
     }

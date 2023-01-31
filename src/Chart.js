@@ -62,7 +62,7 @@ export default class Chart extends Component {
                     <div className="col-md-4 mx-2 mb-2 card" style={{ height: "200px", width: "400px", backgroundColor: "#00c0ef " }}>
 
                         <div className="col-md-6 featuredMoneyContainer">
-                            <span className="featuredMoney" style={{ fontSize: "30px", left: "70px" }}>{parseInt(this.props.Topvalue)}</span>
+                            <span className="featuredMoney" style={{ fontSize: "25px", left: "70px" }}>{parseInt(this.props.Topvalue)}</span>
                         </div>
                         <span style={{ fontSize: "20px", textAlign: "center", color: "white", position: "absolute", top: "101px", left: "70px", fontWeight: "700" }}>Today's {this.props.Coin_Symbol}</span>
 
